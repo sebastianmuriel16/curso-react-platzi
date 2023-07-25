@@ -1,0 +1,30 @@
+.TodoItem .Icon{
+    margin: 8px;
+}
+
+.Icon-check{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 4px;
+}
+
+.Icon-svg{
+    width: 22px;
+    height: 22px;
+}
+
+.Icon-check:hover{
+    color: rgb(18, 186, 15);
+}
+
+.completed-color{
+    color: rgb(18, 186, 15);
+}
+
+.completed-uncolor{
+    color: gray;
+}
