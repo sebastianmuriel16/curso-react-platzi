@@ -6,29 +6,43 @@ import { TodoItem } from './TodoItem';
 import React from 'react';
 import { TodoSB } from './TodoSB';
 
-const defaultTodos = [
-  {text: 'cortar....', completed: true},
-  {text: 'curso React.js', completed: false},
-  {text: 'jack', completed: false},
-  {text: 'como sea', completed: false},
-  {text: 'JACK', completed: false},
-  {text: 'Coincidencias', completed: false},
-];
+// const defaultTodos = [
+//   {text: 'cortar....', completed: true},
+//   {text: 'curso React.js', completed: false},
+//   {text: 'jack', completed: false},
+//   {text: 'como sea', completed: false},
+//   {text: 'JACK', completed: false},
+//   {text: 'Coincidencias', completed: false},
+//   {text: 'V rising', completed: false},
+// ];
+
+function useLocalStorage(itemName,initialValue){
+
+  const localStorageItem = localStorage.getItem(itemName)
+  let parsedItem
+
+  if(!localStorageItem){
+    localStorage.setItem(itemName, JSON.stringify(initialValue))
+    parsedItem = initialValue
+  }else{
+    parsedItem = JSON.parse(localStorageItem)
+  }
+
+  const [item,setItem] = React.useState(parsedItem);
+
+  const saveItems = (newItem) =>{
+    localStorage.setItem(itemName, JSON.stringify(newItem))
+    setItem(newItem)
+  }
+  
+  return [item,saveItems]
+
+}
 
 function App() {
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1')
-  let parsedTodos
 
-  if(!localStorageTodos){
-    localStorage.getItem('TODOS_V1', JSON.stringify([]))
-    parsedTodos = []
-  }else{
-    parsedTodos = JSON.parse(localStorageTodos)
-  }
-  
-
-  const [todos,setTodos] = React.useState(parsedTodos)
+  const [todos,saveTodos] = useLocalStorage('TODOS_V1',[])
   const [searchValue, setSearchValue] = React.useState('');
   console.log('los usuarios buscan ' + searchValue)
 
@@ -37,7 +51,6 @@ function App() {
     !!todo.completed).length; // es solo para saber que trabajamos con valores true or false
   const totalTodos=todos.length;
 
-  console.log(completedTodos)
   
   const searchefTodos = todos.filter( // metoda para filtrar las concidencias del buscador (buscar todos)
     (todo) =>{// se pueden usar () en lugar de return
@@ -47,11 +60,6 @@ function App() {
     }
   )
   
-  const saveTodos = (newTodos) =>{
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
-    setTodos(newTodos)
-  }
-
 
   const completeTodo = (text) => {
     const newTodos = [...todos]
@@ -78,7 +86,7 @@ function App() {
     completed={completedTodos} 
     total={totalTodos}
     todos={todos}
-    setTodos={setTodos}
+    setTodos={saveTodos}
      />
 
 
