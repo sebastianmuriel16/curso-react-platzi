@@ -1,6 +1,6 @@
 import './TodoSB.css'
-import { TodoSearch } from './TodoSearch';
-import { TodoCreateButton } from './TodoCreateButton';
+import { TodoSearch } from '../TodoSearch/TodoSearch';
+import { TodoCreateButton } from '../CreateTodoButton/TodoCreateButton';
 
 
 function TodoSB({searchValue,setSearchValue}){

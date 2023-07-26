@@ -1,10 +1,8 @@
-import { TodoCounter } from './TodoCouenter';
-import { TodoSearch } from './TodoSearch';
-import { TodoCreateButton } from './TodoCreateButton';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
+import { TodoCounter } from './TodoCounter/TodoCouenter';
+import { TodoList } from './TodoList/TodoList';
+import { TodoItem } from './TodoItem/TodoItem';
 import React from 'react';
-import { TodoSB } from './TodoSB';
+import { TodoSB } from './TodoSB/TodoSB';
 
 // const defaultTodos = [
 //   {text: 'cortar....', completed: true},
@@ -41,7 +39,6 @@ function useLocalStorage(itemName,initialValue){
 
 function App() {
 
-
   const [todos,saveTodos] = useLocalStorage('TODOS_V1',[])
   const [searchValue, setSearchValue] = React.useState('');
   console.log('los usuarios buscan ' + searchValue)
@@ -64,7 +61,7 @@ function App() {
   const completeTodo = (text) => {
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos[todoIndex].completed = true
     saveTodos(newTodos)
@@ -73,7 +70,7 @@ function App() {
   const deleteTodo = (text) => {
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos.splice(todoIndex,1)
     saveTodos(newTodos)

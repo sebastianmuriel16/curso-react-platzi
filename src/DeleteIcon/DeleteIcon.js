@@ -1,4 +1,3 @@
-import react from "react";
 import {BsFillTrashFill} from 'react-icons/bs'
 import "./DeleteIcon.css"
 

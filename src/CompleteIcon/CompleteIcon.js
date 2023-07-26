@@ -1,6 +1,4 @@
-import react from "react";
 import { AiOutlineCheck } from 'react-icons/ai';
-import { FcCheckmark} from "react-icons/fc"
 import {BsFillClipboard2CheckFill } from "react-icons/bs"
 import "./CompleteIcon.css"
 function CompleteIcon ({completed,onClik}){

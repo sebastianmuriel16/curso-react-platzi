@@ -1,6 +1,6 @@
 import './TodoItem.css'
-import { DeleteIcon } from './DeleteIcon';
-import { CompleteIcon } from './CompleteIcon';
+import { DeleteIcon } from '../DeleteIcon/DeleteIcon';
+import { CompleteIcon } from '../CompleteIcon/CompleteIcon';
 function TodoItem(props){
     return(
       <li className="TodoItem">
@@ -9,7 +9,7 @@ function TodoItem(props){
         completed={props.completed}
         onClik={props.onComplete}
         />
-        < DeleteIcon
+        < DeleteIcon 
         onClick={props.onDelete}
         />
       </li>
