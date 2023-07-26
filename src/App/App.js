@@ -1,8 +1,7 @@
-import { TodoCounter } from './TodoCounter/TodoCouenter';
-import { TodoList } from './TodoList/TodoList';
-import { TodoItem } from './TodoItem/TodoItem';
+
 import React from 'react';
-import { TodoSB } from './TodoSB/TodoSB';
+import { AppUI } from './AppUI';
+import { useLocalStorage } from './useLocalStorage';
 
 // const defaultTodos = [
 //   {text: 'cortar....', completed: true},
@@ -13,29 +12,6 @@ import { TodoSB } from './TodoSB/TodoSB';
 //   {text: 'Coincidencias', completed: false},
 //   {text: 'V rising', completed: false},
 // ];
-
-function useLocalStorage(itemName,initialValue){
-
-  const localStorageItem = localStorage.getItem(itemName)
-  let parsedItem
-
-  if(!localStorageItem){
-    localStorage.setItem(itemName, JSON.stringify(initialValue))
-    parsedItem = initialValue
-  }else{
-    parsedItem = JSON.parse(localStorageItem)
-  }
-
-  const [item,setItem] = React.useState(parsedItem);
-
-  const saveItems = (newItem) =>{
-    localStorage.setItem(itemName, JSON.stringify(newItem))
-    setItem(newItem)
-  }
-  
-  return [item,saveItems]
-
-}
 
 function App() {
 
@@ -76,35 +52,20 @@ function App() {
     saveTodos(newTodos)
   }
 
-
-  return (
-    </*react.fragment */>
-    <TodoCounter 
-    completed={completedTodos} 
-    total={totalTodos}
-    todos={todos}
-    setTodos={saveTodos}
-     />
-
-
-    <TodoSB
-    searchValue={searchValue}//el padre app le pasa el estado al componente hijo TodoSearch
-    setSearchValue={setSearchValue}
+  return(
+    <AppUI
+    completedTodos = {completedTodos}
+    totalTodos = {totalTodos}
+    todos = {todos}
+    saveTodos = {saveTodos}
+    searchValue= {searchValue}
+    setSearchValue = {setSearchValue}
+    searchefTodos = {searchefTodos}
+    completeTodo = {completeTodo}
+    deleteTodo = {deleteTodo}
     />
-    <TodoList>
-      {searchefTodos.map(todo=>(// ahorrarse el return
-        <TodoItem 
-          key={todo.text}
-          text={todo.text} 
-          completed={todo.completed}
-          onComplete={() => completeTodo(todo.text)}
-          onDelete={() => deleteTodo(todo.text)}/>
-      ))}
-    </TodoList>
+  )
 
-    </>
-
-  );
 }
 
 
