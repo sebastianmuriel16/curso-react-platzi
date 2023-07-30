@@ -5,6 +5,8 @@ import { TodoSB } from '../TodoSB/TodoSB';
 import React from 'react';
 
 function AppUI({
+   loading,
+   error, 
    completedTodos,
    totalTodos,
    todos,
@@ -30,6 +32,12 @@ function AppUI({
         setSearchValue={setSearchValue}
         />
         <TodoList>
+          {loading && <p>Estamos cargando...</p>}
+          {error && <p>En mi opinión profesiónal es tiempo para PÁNICO</p>}
+
+          {(!loading && searchefTodos.length === 0) 
+          && <p>Crea tu primer TODO</p>}
+
           {searchefTodos.map(todo=>(// ahorrarse el return
             <TodoItem 
               key={todo.text}
