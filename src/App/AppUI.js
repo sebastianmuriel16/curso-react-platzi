@@ -3,51 +3,48 @@ import { TodoList } from '../TodoList/TodoList';
 import { TodoItem } from '../TodoItem/TodoItem';
 import { TodoSB } from '../TodoSB/TodoSB';
 import React from 'react';
+import { TodosLoading } from '../TodosLoading/TodoLoading';
+import { TodosError } from '../TodosError/TodosError';
+import { EmptyTodos } from '../EmptyTodos/EmptyTodos';
+import { TodoContext } from '../TodoContext/TodoContext';
 
-function AppUI({
-   loading,
-   error, 
-   completedTodos,
-   totalTodos,
-   todos,
-   saveTodos,
-   searchValue,
-   setSearchValue,
-   searchefTodos,
-   completeTodo,
-   deleteTodo, 
-}){
+function AppUI(){
     return (
         </*react.fragment */>
-        <TodoCounter 
-        completed={completedTodos} 
-        total={totalTodos}
-        todos={todos}
-        setTodos={saveTodos}
-         />
-    
-    
-        <TodoSB
-        searchValue={searchValue}//el padre app le pasa el estado al componente hijo TodoSearch
-        setSearchValue={setSearchValue}
-        />
-        <TodoList>
-          {loading && <p>Estamos cargando...</p>}
-          {error && <p>En mi opinión profesiónal es tiempo para PÁNICO</p>}
+        <TodoCounter/>
+        <TodoSB/>
 
-          {(!loading && searchefTodos.length === 0) 
-          && <p>Crea tu primer TODO</p>}
+          <TodoContext.Consumer>
+              {({
+                loading,
+                error,
+                searchedTodos,
+                completeTodo,
+                deleteTodo
+              })=>(
+            <TodoList>
+            {loading && (
+              <>
+                <TodosLoading />
+                <TodosLoading />
+                <TodosLoading />
+              </>
+            )}
+            {error && <TodosError/>}
+            {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
 
-          {searchefTodos.map(todo=>(// ahorrarse el return
-            <TodoItem 
-              key={todo.text}
-              text={todo.text} 
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}/>
-          ))}
-        </TodoList>
-    
+            {searchedTodos.map(todo => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            ))}
+           </TodoList>
+            )}
+          </TodoContext.Consumer>
         </>
     
       );

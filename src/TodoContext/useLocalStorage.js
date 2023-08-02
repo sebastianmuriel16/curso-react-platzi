@@ -1,4 +1,5 @@
 import React from "react"
+
 function useLocalStorage(itemName,initialValue){
 
     const [item, setItem] = React.useState(initialValue)
@@ -43,3 +44,13 @@ function useLocalStorage(itemName,initialValue){
   }
   
 export { useLocalStorage }  
+
+// const defaultTodos = [
+//   {text: 'cortar....', completed: true},
+//   {text: 'curso React.js', completed: false},
+//   {text: 'jack', completed: false},
+//   {text: 'como sea', completed: false},
+//   {text: 'JACK', completed: false},
+//   {text: 'Coincidencias', completed: false},
+//   {text: 'V rising', completed: false},
+// ];
