@@ -6,22 +6,33 @@ import React from 'react';
 import { TodosLoading } from '../TodosLoading/TodoLoading';
 import { TodosError } from '../TodosError/TodosError';
 import { EmptyTodos } from '../EmptyTodos/EmptyTodos';
+import { Modal } from '../Modal/Modal';
 import { TodoContext } from '../TodoContext/TodoContext';
 
 function AppUI(){
+
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal
+  }= React.useContext(TodoContext)
+
+
     return (
         </*react.fragment */>
         <TodoCounter/>
         <TodoSB/>
 
-          <TodoContext.Consumer>
-              {({
-                loading,
-                error,
-                searchedTodos,
-                completeTodo,
-                deleteTodo
-              })=>(
+      {openModal && (
+        <Modal>
+        funciono
+        </Modal>
+      )}
+
             <TodoList>
             {loading && (
               <>
@@ -43,8 +54,6 @@ function AppUI(){
               />
             ))}
            </TodoList>
-            )}
-          </TodoContext.Consumer>
         </>
     
       );

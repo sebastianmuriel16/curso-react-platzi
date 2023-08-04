@@ -1,11 +1,13 @@
 import React from 'react';
 import './TodoSearch.css'
+import { TodoContext } from '../TodoContext/TodoContext';
 
 
-function TodoSearch({
-    searchValue,//resivir los estados en forma de props
-    setSearchValue,
-}){
+function TodoSearch(){
+    const  {
+        searchValue,//resivir los estados en forma de props
+        setSearchValue
+    } = React.useContext(TodoContext)
 
 
     return (
