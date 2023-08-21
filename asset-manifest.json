@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/home/sebastian/Escritorio/curso-react-platzi/build/static/css/main.2de57b41.css",
+    "main.js": "/home/sebastian/Escritorio/curso-react-platzi/build/static/js/main.6a32f00e.js",
+    "index.html": "/home/sebastian/Escritorio/curso-react-platzi/build/index.html",
+    "main.2de57b41.css.map": "/home/sebastian/Escritorio/curso-react-platzi/build/static/css/main.2de57b41.css.map",
+    "main.6a32f00e.js.map": "/home/sebastian/Escritorio/curso-react-platzi/build/static/js/main.6a32f00e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2de57b41.css",
+    "static/js/main.6a32f00e.js"
+  ]
+}
