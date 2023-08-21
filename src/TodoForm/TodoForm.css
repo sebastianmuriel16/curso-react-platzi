@@ -1,0 +1,63 @@
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 300px;
+    background-color: #1756de;
+    padding: 33px 40px;
+}
+
+label{
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+textarea{
+    background-color: #F9FBFC;
+    border-radius: 2px;
+    color: #1E1E1F;
+    font-size: 20px;
+    text-align: center;
+    padding: 12px;
+    height: 96px;
+    width: calc(100% - 24px);
+}
+
+.TodoForm-buttonConainer{
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.TodoForm-button{
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    color: #1E1E1F;
+    font-weight: 400;
+    width: 120px;
+    height: 48px;
+    border-radius: 2px;
+    border: none;
+    font-family: "Montserrat";
+}
+
+.TodoForm-button--add{
+    background-color: #F9FBFC;
+    color: #1E1E1F;
+}
+
+.TodoForm-button--cancel{
+    background: transparent;
+}
+
+.TodoForm-button--cancel:hover{
+    background: #F9FBFC;
+    color: #1E1E1F;
+}

@@ -1,13 +1,14 @@
 import './CreateTodoButton.css'    
-    function TodoCreateButton(){
+import {AiOutlinePlusCircle} from 'react-icons/ai'
+
+    function TodoCreateButton({setOpenModal}){
         return(
             <button className="CreateTodoButton"
-            onClick={(event) => {
-                console.log('clear')
-                console.log(event)
-                console.log(event.target)
-                }}>
-                Add
+            onClick={
+                ()=>{
+                setOpenModal(state => !state)
+            }}>
+            <AiOutlinePlusCircle className='icon'/>
             </button>
         )
     }

@@ -25,7 +25,8 @@ function AppUI(){
     return (
         </*react.fragment */>
         <TodoCounter/>
-        <TodoSB/>
+        <TodoSB
+        setOpenModal={setOpenModal}/>
 
       {openModal && (
         <Modal>
